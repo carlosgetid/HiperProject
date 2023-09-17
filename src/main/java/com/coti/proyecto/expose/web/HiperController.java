@@ -1,22 +1,30 @@
 package com.coti.proyecto.expose.web;
 
 import com.coti.proyecto.hiper.model.business.Canal;
+import com.coti.proyecto.hiper.model.business.Cotizacion;
 import com.coti.proyecto.hiper.model.business.Jornada;
 import com.coti.proyecto.hiper.model.business.Modalidad;
 import com.coti.proyecto.hiper.model.business.Requerimiento;
 import com.coti.proyecto.hiper.model.business.Servicio;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @ComponentScan(value = "com.proyecto", lazyInit = true)
 public class HiperController {
+
+  private List<Cotizacion> cotizacions = new ArrayList<>();
 
   @GetMapping("/obtener/{id}")
   public String getBook(@PathVariable String id) {
@@ -152,5 +160,28 @@ public class HiperController {
     e3.setPrecio(180.00);
 
     return ResponseEntity.ok(List.of(e1, e2, e3));
+  }
+
+  @PostMapping("/grabar")
+  public String grabar(@RequestBody Cotizacion c1) {
+    cotizacions.stream()
+        .filter(x -> Objects.equals(x.getCodigo(), c1.getCodigo()))
+        .findFirst()
+        .map(x -> {
+          System.out.println("reemplazado");
+          x.setCodigo(c1.getCodigo());
+          return  x;
+        })
+        .orElseGet(() -> {
+          System.out.println("agregado");
+          cotizacions.add(c1);
+          return c1;
+        });
+
+    System.out.println("========================================");
+    cotizacions.forEach(x-> System.out.println(x.getCodigo()));
+    System.out.println("========================================");
+
+    return "Guardado exitosamente";
   }
 }
