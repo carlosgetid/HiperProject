@@ -11,6 +11,6 @@ public class Servicio {
 
   private String nombre;
   private String codigo;
-  private String precio;
+  private Double precio;
 
 }

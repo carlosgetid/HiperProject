@@ -12,6 +12,6 @@ public class Requerimiento {
   private String codigo;
   private String descripcion;
   private String cantidad;
-  private String precio;
+  private Double precio;
 
 }
