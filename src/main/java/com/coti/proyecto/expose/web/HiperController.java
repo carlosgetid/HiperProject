@@ -1,5 +1,6 @@
 package com.coti.proyecto.expose.web;
 
+import com.coti.proyecto.hiper.model.business.Canal;
 import com.coti.proyecto.hiper.model.business.Requerimiento;
 import com.coti.proyecto.hiper.model.business.Servicio;
 import java.util.List;
@@ -74,5 +75,34 @@ public class HiperController {
     e6.setPrecio(0.003);
 
     return ResponseEntity.ok(List.of(e1, e2, e3, e4, e5, e6));
+  }
+
+  @GetMapping("/canales")
+  public ResponseEntity<List<Canal>> obtenerCanales() {
+    Canal e1 = new Canal();
+    e1.setCodigo("01");
+    e1.setDescripcion("Canal Telefonico");
+    e1.setPorcentaje(1.0);
+    e1.setPrecio(1200.00);
+
+    Canal e2 = new Canal();
+    e2.setCodigo("02");
+    e2.setDescripcion("Chat en Vivo");
+    e2.setPorcentaje(0.5);
+    e2.setPrecio(1500.00);
+
+    Canal e3 = new Canal();
+    e3.setCodigo("03");
+    e3.setDescripcion("Redes Sociales");
+    e3.setPorcentaje(1.0);
+    e3.setPrecio(2500.00);
+
+    Canal e4 = new Canal();
+    e4.setCodigo("04");
+    e4.setDescripcion("Correo Electronico");
+    e4.setPorcentaje(0.5);
+    e4.setPrecio(2200.00);
+
+    return ResponseEntity.ok(List.of(e1, e2, e3, e4));
   }
 }
