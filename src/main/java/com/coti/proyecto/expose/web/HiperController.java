@@ -1,6 +1,7 @@
 package com.coti.proyecto.expose.web;
 
 import com.coti.proyecto.hiper.model.business.Canal;
+import com.coti.proyecto.hiper.model.business.Jornada;
 import com.coti.proyecto.hiper.model.business.Requerimiento;
 import com.coti.proyecto.hiper.model.business.Servicio;
 import java.util.List;
@@ -104,5 +105,28 @@ public class HiperController {
     e4.setPrecio(2200.00);
 
     return ResponseEntity.ok(List.of(e1, e2, e3, e4));
+  }
+
+  @GetMapping("/jornadas")
+  public ResponseEntity<List<Jornada>> obtenerJornadas() {
+    Jornada e1 = new Jornada();
+    e1.setCodigo("01");
+    e1.setDescripcion("00:00 AM - 08:00 AM");
+    e1.setPorcentaje(1.0);
+    e1.setPrecio(3000.00);
+
+    Jornada e2 = new Jornada();
+    e2.setCodigo("02");
+    e2.setDescripcion("08:00 AM - 12:00 PM");
+    e2.setPorcentaje(1.1);
+    e2.setPrecio(3300.00);
+
+    Jornada e3 = new Jornada();
+    e3.setCodigo("03");
+    e3.setDescripcion("12:00 PM - 00:00 AM");
+    e3.setPorcentaje(1.2);
+    e3.setPrecio(3000.00);
+
+    return ResponseEntity.ok(List.of(e1, e2, e3));
   }
 }
