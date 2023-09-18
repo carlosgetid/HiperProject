@@ -1,11 +1,7 @@
 package com.coti.proyecto.expose.web;
 
-import com.coti.proyecto.hiper.model.business.Canal;
-import com.coti.proyecto.hiper.model.business.Cotizacion;
-import com.coti.proyecto.hiper.model.business.Jornada;
-import com.coti.proyecto.hiper.model.business.Modalidad;
-import com.coti.proyecto.hiper.model.business.Requerimiento;
-import com.coti.proyecto.hiper.model.business.Servicio;
+import com.coti.proyecto.hiper.model.business.*;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -53,36 +49,42 @@ public class HiperController {
     e1.setDescripcion("Central Telefonica");
     e1.setCantidad("1");
     e1.setPrecio(12000.00);
+    e1.setSelected(false);
 
     Requerimiento e2 = new Requerimiento();
     e2.setCodigo("02");
     e2.setDescripcion("Software Acceso Remoto");
     e2.setCantidad("1");
     e2.setPrecio(24000.00);
+    e2.setSelected(false);
 
     Requerimiento e3 = new Requerimiento();
     e3.setCodigo("03");
     e3.setDescripcion("Informes Personalizados");
     e3.setCantidad("1");
     e3.setPrecio(10000.00);
+    e3.setSelected(false);
 
     Requerimiento e4 = new Requerimiento();
     e4.setCodigo("04");
     e4.setDescripcion("Monitoreo Proactivo");
     e4.setCantidad("1");
     e4.setPrecio(30000.00);
+    e4.setSelected(false);
 
     Requerimiento e5 = new Requerimiento();
     e5.setCodigo("05");
     e5.setDescripcion("Herramienta de Tickets");
     e5.setCantidad("1");
     e5.setPrecio(10.00);
+    e5.setSelected(false);
 
     Requerimiento e6 = new Requerimiento();
     e6.setCodigo("06");
     e6.setDescripcion("Soporte Onsite");
     e6.setCantidad("1");
     e6.setPrecio(0.003);
+    e6.setSelected(false);
 
     return ResponseEntity.ok(List.of(e1, e2, e3, e4, e5, e6));
   }
@@ -92,26 +94,26 @@ public class HiperController {
     Canal e1 = new Canal();
     e1.setCodigo("01");
     e1.setDescripcion("Canal Telefonico");
-    e1.setPorcentaje(1.0);
-    e1.setPrecio(1200.00);
+    e1.setPorcentaje(0.01);
+    e1.setSelected(false);
 
     Canal e2 = new Canal();
     e2.setCodigo("02");
     e2.setDescripcion("Chat en Vivo");
-    e2.setPorcentaje(0.5);
-    e2.setPrecio(1500.00);
+    e2.setPorcentaje(0.005);
+    e2.setSelected(false);
 
     Canal e3 = new Canal();
     e3.setCodigo("03");
     e3.setDescripcion("Redes Sociales");
-    e3.setPorcentaje(1.0);
-    e3.setPrecio(2500.00);
+    e3.setPorcentaje(0.01);
+    e3.setSelected(false);
 
     Canal e4 = new Canal();
     e4.setCodigo("04");
     e4.setDescripcion("Correo Electronico");
-    e4.setPorcentaje(0.5);
-    e4.setPrecio(2200.00);
+    e4.setPorcentaje(0.01);
+    e4.setSelected(false);
 
     return ResponseEntity.ok(List.of(e1, e2, e3, e4));
   }
@@ -144,7 +146,7 @@ public class HiperController {
     Modalidad e1 = new Modalidad();
     e1.setCodigo("01");
     e1.setDescripcion("Hibrido");
-    e1.setPorcentaje(0.3);
+    e1.setPorcentaje(0.03);
     e1.setPrecio(90.00);
 
     Modalidad e2 = new Modalidad();
@@ -156,10 +158,64 @@ public class HiperController {
     Modalidad e3 = new Modalidad();
     e3.setCodigo("03");
     e3.setDescripcion("Presencial");
-    e3.setPorcentaje(0.6);
+    e3.setPorcentaje(0.06);
     e3.setPrecio(180.00);
 
     return ResponseEntity.ok(List.of(e1, e2, e3));
+  }
+
+  @GetMapping("/dias")
+  public ResponseEntity<List<Dias>> obtenerDias() {
+    Dias e1 = new Dias();
+    e1.setCodigo("01");
+    e1.setDescripcion("Lunes");
+    e1.setAbreviatura("Lu");
+    e1.setPorcentaje(1.0);
+    e1.setSelected(false);
+
+    Dias e2 = new Dias();
+    e2.setCodigo("02");
+    e2.setDescripcion("Martes");
+    e2.setAbreviatura("Ma");
+    e2.setPorcentaje(1.0);
+    e2.setSelected(false);
+
+    Dias e3 = new Dias();
+    e3.setCodigo("03");
+    e3.setDescripcion("Miercoles");
+    e3.setAbreviatura("Mi");
+    e3.setPorcentaje(1.0);
+    e3.setSelected(false);
+
+    Dias e4 = new Dias();
+    e4.setCodigo("04");
+    e4.setDescripcion("Jueves");
+    e4.setAbreviatura("Ju");
+    e4.setPorcentaje(1.0);
+    e4.setSelected(false);
+
+    Dias e5 = new Dias();
+    e5.setCodigo("05");
+    e5.setDescripcion("Viernes");
+    e5.setAbreviatura("Vi");
+    e5.setPorcentaje(1.0);
+    e5.setSelected(false);
+
+    Dias e6 = new Dias();
+    e6.setCodigo("06");
+    e6.setDescripcion("Sábado");
+    e6.setAbreviatura("Sa");
+    e6.setPorcentaje(1.003);
+    e6.setSelected(false);
+
+    Dias e7 = new Dias();
+    e7.setCodigo("07");
+    e7.setDescripcion("Domingo");
+    e7.setAbreviatura("Do");
+    e7.setPorcentaje(1.005);
+    e7.setSelected(false);
+
+    return ResponseEntity.ok(List.of(e1, e2, e3,e4,e5,e6,e7));
   }
 
   @PostMapping("/grabar")

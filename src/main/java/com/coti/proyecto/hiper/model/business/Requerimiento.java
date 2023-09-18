@@ -13,5 +13,6 @@ public class Requerimiento {
   private String descripcion;
   private String cantidad;
   private Double precio;
+  private Boolean selected;
 
 }

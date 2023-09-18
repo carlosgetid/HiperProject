@@ -12,6 +12,5 @@ public class Canal {
   private String codigo;
   private String descripcion;
   private Double porcentaje;
-  private Double precio;
-
+  private Boolean selected;
 }
