@@ -203,7 +203,7 @@ public class HiperController {
 
     Dias e6 = new Dias();
     e6.setCodigo("06");
-    e6.setDescripcion("Sábado");
+    e6.setDescripcion("Sabado");
     e6.setAbreviatura("Sa");
     e6.setPorcentaje(1.003);
     e6.setSelected(false);
@@ -239,5 +239,30 @@ public class HiperController {
     System.out.println("========================================");
 
     return "Guardado exitosamente";
+  }
+
+  @GetMapping("/outsourcing/desarrollo/software")
+  public ResponseEntity<List<DesarrolloSoftware>> outsourcingDesarrolloSoftware() {
+    DesarrolloSoftware e1 = new DesarrolloSoftware();
+    e1.setCodigo("01");
+    e1.setDescripcion("Desarrollo de aplicaciones web");
+    e1.setCostoXHora(17.00);
+
+    DesarrolloSoftware e2 = new DesarrolloSoftware();
+    e2.setCodigo("02");
+    e2.setDescripcion("Desarrollo de aplicaciones moviles");
+    e2.setCostoXHora(17.00);
+
+    DesarrolloSoftware e3 = new DesarrolloSoftware();
+    e3.setCodigo("03");
+    e3.setDescripcion("Desarrollo de software personalizado");
+    e3.setCostoXHora(17.00);
+
+    DesarrolloSoftware e4 = new DesarrolloSoftware();
+    e4.setCodigo("04");
+    e4.setDescripcion("Desarrollo de software de gestion empresarial");
+    e4.setCostoXHora(17.00);
+
+    return ResponseEntity.ok(List.of(e1, e2, e3, e4));
   }
 }
