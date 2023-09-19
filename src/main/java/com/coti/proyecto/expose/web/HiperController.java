@@ -224,8 +224,7 @@ public class HiperController {
         .findFirst()
         .map(x -> {
           System.out.println("reemplazado");
-          x.setCodigo(c1.getCodigo());
-          return  x;
+          return  c1;
         })
         .orElseGet(() -> {
           System.out.println("agregado");
@@ -234,7 +233,7 @@ public class HiperController {
         });
 
     System.out.println("========================================");
-    cotizacions.forEach(x-> System.out.println(x.getCodigo()));
+    cotizacions.forEach(x-> System.out.println(x.toString()));
     System.out.println("========================================");
 
     return "Guardado exitosamente";
