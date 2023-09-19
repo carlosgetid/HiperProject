@@ -239,6 +239,11 @@ public class HiperController {
     return "Guardado exitosamente";
   }
 
+  @GetMapping("/listar")
+  public ResponseEntity<List<Cotizacion>> listar() {
+    return ResponseEntity.ok(cotizacions);
+  }
+
   @GetMapping("/outsourcing/desarrollo/software")
   public ResponseEntity<List<DesarrolloSoftware>> outsourcingDesarrolloSoftware() {
     DesarrolloSoftware e1 = new DesarrolloSoftware();
