@@ -327,4 +327,24 @@ public class HiperController {
 
   }
 
+  @GetMapping("/outsourcing/integracion/datos")
+  public ResponseEntity<List<IntegracionDatos>> outsourcingIntegracionDatos() {
+    IntegracionDatos e1 = new IntegracionDatos();
+    e1.setCodigo("01");
+    e1.setDescripcion("Integracion de sistemas y flujos de datos");
+    e1.setCostoXHora(19.00);
+
+    IntegracionDatos e2 = new IntegracionDatos();
+    e2.setCodigo("02");
+    e2.setDescripcion("ETL (Extraccion, Transformacion y Carga) de datos");
+    e2.setCostoXHora(19.00);
+
+    IntegracionDatos e3 = new IntegracionDatos();
+    e3.setCodigo("03");
+    e3.setDescripcion("Automatizacion de procesos de datos");
+    e3.setCostoXHora(19.00);
+
+    return ResponseEntity.ok(List.of(e1, e2, e3));
+    
+  }
 }
