@@ -382,4 +382,29 @@ public class HiperController {
 
     return ResponseEntity.ok(List.of(e1, e2));
   }
+
+  @GetMapping("/outsourcing/evaluacionymejora/seguridadcibernetica")
+  public ResponseEntity<List<EvaluacionMejoraSeguridadCibernetica>> outsourcingEvaluacionMejoraSeguridadCibernetica() {
+    EvaluacionMejoraSeguridadCibernetica e1 = new EvaluacionMejoraSeguridadCibernetica();
+    e1.setCodigo("01");
+    e1.setDescripcion("Identificacion de vulnerabilidades en aplicaciones, bases de datos, sistemas operativos, etc");
+    e1.setCostoXHora(23.00);
+
+    EvaluacionMejoraSeguridadCibernetica e2 = new EvaluacionMejoraSeguridadCibernetica();
+    e2.setCodigo("02");
+    e2.setDescripcion("Evaluacion de la seguridad de la red y la infraestructura de TI");
+    e2.setCostoXHora(23.00);
+
+    EvaluacionMejoraSeguridadCibernetica e3 = new EvaluacionMejoraSeguridadCibernetica();
+    e3.setCodigo("03");
+    e3.setDescripcion("Desarrollo de un plan de respuesta a incidentes");
+    e3.setCostoXHora(23.00);
+
+    EvaluacionMejoraSeguridadCibernetica e4 = new EvaluacionMejoraSeguridadCibernetica();
+    e4.setCodigo("04");
+    e4.setDescripcion("Auditorias Regulares de Seguridad");
+    e4.setCostoXHora(23.00);
+
+    return ResponseEntity.ok(List.of(e1, e2, e3, e4));
+  }
 }
