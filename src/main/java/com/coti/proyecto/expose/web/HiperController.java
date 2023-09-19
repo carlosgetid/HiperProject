@@ -476,4 +476,29 @@ public class HiperController {
 
     return ResponseEntity.ok(List.of(e1, e2, e3, e4, e5, e6, e7));
   }
+
+  @GetMapping("/soporte/hardware")
+  public ResponseEntity<List<SoporteHardware>> soporteSoporteHardware() {
+    SoporteHardware e1 = new SoporteHardware();
+    e1.setCodigo("01");
+    e1.setDescripcion("PC");
+    e1.setPrecio(0.0);
+
+    SoporteHardware e2 = new SoporteHardware();
+    e2.setCodigo("02");
+    e2.setDescripcion("Laptops");
+    e2.setPrecio(0.0);
+
+    SoporteHardware e3 = new SoporteHardware();
+    e3.setCodigo("03");
+    e3.setDescripcion("Servidores");
+    e3.setPrecio(10.0);
+
+    SoporteHardware e4 = new SoporteHardware();
+    e4.setCodigo("04");
+    e4.setDescripcion("Mac");
+    e4.setPrecio(3.0);
+
+    return ResponseEntity.ok(List.of(e1, e2, e3, e4));
+  }
 }
