@@ -306,4 +306,25 @@ public class HiperController {
     return ResponseEntity.ok(List.of(e1, e2, e3));
   }
 
+  @GetMapping("/outsourcing/gestion/basededatos")
+  public ResponseEntity<List<GestionBaseDeDatos>> outsourcingGestionBaseDeDatos() {
+    GestionBaseDeDatos e1 = new GestionBaseDeDatos();
+    e1.setCodigo("01");
+    e1.setDescripcion("Administracion y mantenimiento de bases de datos");
+    e1.setCostoXHora(17.00);
+
+    GestionBaseDeDatos e2 = new GestionBaseDeDatos();
+    e2.setCodigo("02");
+    e2.setDescripcion("Optimizacion de bases de datos para el rendimiento");
+    e2.setCostoXHora(17.00);
+
+    GestionBaseDeDatos e3 = new GestionBaseDeDatos();
+    e3.setCodigo("03");
+    e3.setDescripcion("Migracion de datos entre sistemas");
+    e3.setCostoXHora(17.00);
+
+    return ResponseEntity.ok(List.of(e1, e2, e3));
+
+  }
+
 }
