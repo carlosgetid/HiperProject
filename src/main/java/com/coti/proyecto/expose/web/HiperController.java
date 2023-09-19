@@ -367,4 +367,19 @@ public class HiperController {
 
     return ResponseEntity.ok(List.of(e1, e2, e3));
   }
+
+  @GetMapping("/outsourcing/automatizacion/procesodenegocios")
+  public ResponseEntity<List<AutomatizacionDeProcesosDeNegocios>> outsourcingAutomatizacionDeProcesosDeNegocios() {
+    AutomatizacionDeProcesosDeNegocios e1 = new AutomatizacionDeProcesosDeNegocios();
+    e1.setCodigo("01");
+    e1.setDescripcion("Proyectos de analisis de Big Data");
+    e1.setCostoXHora(19.00);
+
+    AutomatizacionDeProcesosDeNegocios e2 = new AutomatizacionDeProcesosDeNegocios();
+    e2.setCodigo("02");
+    e2.setDescripcion("Modelado predictivo y analisis avanzado");
+    e2.setCostoXHora(19.00);
+
+    return ResponseEntity.ok(List.of(e1, e2));
+  }
 }
