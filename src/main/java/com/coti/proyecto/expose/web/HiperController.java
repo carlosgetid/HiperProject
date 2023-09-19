@@ -286,4 +286,24 @@ public class HiperController {
     return ResponseEntity.ok(List.of(e1, e2, e3));
   }
 
+  @GetMapping("/outsourcing/gestion/proyectos")
+  public ResponseEntity<List<GestionProyectos>> outsourcingGestionProyectos() {
+    GestionProyectos e1 = new GestionProyectos();
+    e1.setCodigo("01");
+    e1.setDescripcion("Gestion de proyectos de desarrollo de software");
+    e1.setCostoXHora(16.00);
+
+    GestionProyectos e2 = new GestionProyectos();
+    e2.setCodigo("02");
+    e2.setDescripcion("Gestion de proyectos de TI");
+    e2.setCostoXHora(16.00);
+
+    GestionProyectos e3 = new GestionProyectos();
+    e3.setCodigo("03");
+    e3.setDescripcion("Gestion de proyectos de infraestructura");
+    e3.setCostoXHora(16.00);
+
+    return ResponseEntity.ok(List.of(e1, e2, e3));
+  }
+
 }
