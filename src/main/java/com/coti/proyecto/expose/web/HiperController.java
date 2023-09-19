@@ -421,4 +421,19 @@ public class HiperController {
 
     return ResponseEntity.ok(List.of(e1, e2));
   }
+
+  @GetMapping("/soporte/office")
+  public ResponseEntity<List<SoporteOficina>> soporteSoporteOficina() {
+    SoporteOficina e1 = new SoporteOficina();
+    e1.setCodigo("01");
+    e1.setDescripcion("Dentro de Oficina");
+    e1.setPorcentaje(0.0);
+
+    SoporteOficina e2 = new SoporteOficina();
+    e2.setCodigo("02");
+    e2.setDescripcion("Fuera de Oficina");
+    e2.setPorcentaje(0.5);
+
+    return ResponseEntity.ok(List.of(e1, e2));
+  }
 }
