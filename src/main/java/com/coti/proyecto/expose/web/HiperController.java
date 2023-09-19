@@ -347,4 +347,24 @@ public class HiperController {
     return ResponseEntity.ok(List.of(e1, e2, e3));
     
   }
+
+  @GetMapping("/outsourcing/bigdata/cienciadedatos")
+  public ResponseEntity<List<BigDataCienciaDeDatos>> outsourcingBigDataCienciaDeDatos() {
+    BigDataCienciaDeDatos e1 = new BigDataCienciaDeDatos();
+    e1.setCodigo("01");
+    e1.setDescripcion("Proyectos de analisis de Big Data");
+    e1.setCostoXHora(21.00);
+
+    BigDataCienciaDeDatos e2 = new BigDataCienciaDeDatos();
+    e2.setCodigo("02");
+    e2.setDescripcion("Modelado predictivo y analisis avanzado");
+    e2.setCostoXHora(21.00);
+
+    BigDataCienciaDeDatos e3 = new BigDataCienciaDeDatos();
+    e3.setCodigo("03");
+    e3.setDescripcion("Implementacion de soluciones de ciencia de datos");
+    e3.setCostoXHora(21.00);
+
+    return ResponseEntity.ok(List.of(e1, e2, e3));
+  }
 }
