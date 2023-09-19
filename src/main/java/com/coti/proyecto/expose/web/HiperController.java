@@ -265,4 +265,25 @@ public class HiperController {
 
     return ResponseEntity.ok(List.of(e1, e2, e3, e4));
   }
+
+  @GetMapping("/outsourcing/consultoria/asesoriamiento")
+  public ResponseEntity<List<ConsultoriaAsesoramiento>> outsourcingConsultoriaAsesoramiento() {
+    ConsultoriaAsesoramiento e1 = new ConsultoriaAsesoramiento();
+    e1.setCodigo("01");
+    e1.setDescripcion("Consultoria en estrategia de TI");
+    e1.setCostoXHora(16.00);
+
+    ConsultoriaAsesoramiento e2 = new ConsultoriaAsesoramiento();
+    e2.setCodigo("02");
+    e2.setDescripcion("Consultoria en ciberseguridad");
+    e2.setCostoXHora(16.00);
+
+    ConsultoriaAsesoramiento e3 = new ConsultoriaAsesoramiento();
+    e3.setCodigo("03");
+    e3.setDescripcion("Consultoria en gestion de proyectos");
+    e3.setCostoXHora(16.00);
+
+    return ResponseEntity.ok(List.of(e1, e2, e3));
+  }
+
 }
