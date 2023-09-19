@@ -3,7 +3,6 @@ package com.coti.proyecto.expose.web;
 import com.coti.proyecto.hiper.model.business.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import org.springframework.context.annotation.ComponentScan;
@@ -406,5 +405,20 @@ public class HiperController {
     e4.setCostoXHora(23.00);
 
     return ResponseEntity.ok(List.of(e1, e2, e3, e4));
+  }
+
+  @GetMapping("/soporte/modalidad")
+  public ResponseEntity<List<SoporteModalidad>> soporteSoporteModalidad() {
+    SoporteModalidad e1 = new SoporteModalidad();
+    e1.setCodigo("01");
+    e1.setDescripcion("Soporte Tecnico Estandar");
+    e1.setPrecio(10.00);
+
+    SoporteModalidad e2 = new SoporteModalidad();
+    e2.setCodigo("02");
+    e2.setDescripcion("Soporte Remoto");
+    e2.setPrecio(05.00);
+
+    return ResponseEntity.ok(List.of(e1, e2));
   }
 }
