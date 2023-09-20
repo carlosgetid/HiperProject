@@ -447,36 +447,44 @@ public class HiperController {
     e1.setCodigo("01");
     e1.setDescripcion("Instalacion y Configuracion de Software");
     e1.setPrecio(0.0);
+    e1.setSelected(false);
 
     SoporteOtros e2 = new SoporteOtros();
     e2.setCodigo("02");
     e2.setDescripcion("Reinstalacion de Sistema Operativo");
     e2.setPrecio(2.0);
+    e2.setSelected(false);
 
     SoporteOtros e3 = new SoporteOtros();
     e3.setCodigo("03");
     e3.setDescripcion("Respaldo de Informacion");
-    e2.setPrecio(2.0);
+    e3.setPrecio(2.0);
+    e3.setSelected(false);
 
     SoporteOtros e4 = new SoporteOtros();
     e4.setCodigo("04");
     e4.setDescripcion("Limpieza de Hardware");
     e4.setPrecio(2.0);
+    e4.setSelected(false);
 
     SoporteOtros e5 = new SoporteOtros();
     e5.setCodigo("05");
     e5.setDescripcion("Instalacion de Antivirus y Antimalware");
     e5.setPrecio(1.0);
+    e5.setSelected(false);
+
 
     SoporteOtros e6 = new SoporteOtros();
     e6.setCodigo("06");
     e6.setDescripcion("Configuracion de Impresoras");
     e6.setPrecio(0.0);
+    e6.setSelected(false);
 
     SoporteOtros e7 = new SoporteOtros();
     e7.setCodigo("07");
     e7.setDescripcion("Inventariado de Equipos");
     e7.setPrecio(5.0);
+    e7.setSelected(false);
 
     return ResponseEntity.ok(List.of(e1, e2, e3, e4, e5, e6, e7));
   }
@@ -487,21 +495,25 @@ public class HiperController {
     e1.setCodigo("01");
     e1.setDescripcion("PC");
     e1.setPrecio(0.0);
+    e1.setSelected(false);
 
     SoporteHardware e2 = new SoporteHardware();
     e2.setCodigo("02");
     e2.setDescripcion("Laptops");
     e2.setPrecio(0.0);
+    e2.setSelected(false);
 
     SoporteHardware e3 = new SoporteHardware();
     e3.setCodigo("03");
     e3.setDescripcion("Servidores");
     e3.setPrecio(10.0);
+    e3.setSelected(false);
 
     SoporteHardware e4 = new SoporteHardware();
     e4.setCodigo("04");
     e4.setDescripcion("Mac");
     e4.setPrecio(3.0);
+    e4.setSelected(false);
 
     return ResponseEntity.ok(List.of(e1, e2, e3, e4));
   }

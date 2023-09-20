@@ -12,5 +12,6 @@ public class SoporteHardware {
   private String codigo;
   private String descripcion;
   private Double precio;
+  private Boolean selected;
 
 }
