@@ -1,6 +1,6 @@
 package com.coti.proyecto.expose.web;
 
-import com.coti.proyecto.hiper.model.business.outsourcing.CotizacionOutsourcing;
+import com.coti.proyecto.hiper.model.business.outsourcing.OutsourcingCotizacion;
 import com.coti.proyecto.hiper.model.business.outsourcing.Servicio;
 import com.coti.proyecto.hiper.model.business.outsourcing.SubServicio;
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @ComponentScan(value = "com.proyecto", lazyInit = true)
 public class OutsourcingController {
 
-  private List<CotizacionOutsourcing> cotizacionOutsourcings = new ArrayList<>();
+  private List<OutsourcingCotizacion> outsourcingCotizacions = new ArrayList<>();
 
   @GetMapping("/outsourcing/servicios/subservicios")
   public ResponseEntity<List<Servicio>> obtenerServicios() {
@@ -210,8 +210,8 @@ public class OutsourcingController {
 
 
   @PostMapping("/outsourcing/grabar")
-  public String grabar(@RequestBody CotizacionOutsourcing c1) {
-    cotizacionOutsourcings.stream()
+  public String grabar(@RequestBody OutsourcingCotizacion c1) {
+    outsourcingCotizacions.stream()
         .filter(x -> Objects.equals(x.getNroCotizacion(), c1.getNroCotizacion()))
         .findFirst()
         .ifPresentOrElse(x -> {
@@ -221,17 +221,17 @@ public class OutsourcingController {
           x.setPersonal(c1.getPersonal());
           x.setTipo(c1.getTipo());
           x.setCostoXServicio(c1.getCostoXServicio());
-        }, () -> cotizacionOutsourcings.add(c1));
+        }, () -> outsourcingCotizacions.add(c1));
 
     System.out.println("========================================");
-    cotizacionOutsourcings.forEach(x-> System.out.println(x.toString()));
+    outsourcingCotizacions.forEach(x-> System.out.println(x.toString()));
     System.out.println("========================================");
 
     return "Guardado exitosamente";
   }
 
   @GetMapping("/outsourcing/listar")
-  public ResponseEntity<List<CotizacionOutsourcing>> listar() {
-    return ResponseEntity.ok(cotizacionOutsourcings);
+  public ResponseEntity<List<OutsourcingCotizacion>> listar() {
+    return ResponseEntity.ok(outsourcingCotizacions);
   }
 }

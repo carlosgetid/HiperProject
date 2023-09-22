@@ -7,7 +7,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class CotizacionOutsourcing {
+public class OutsourcingCotizacion {
 
   private String nroCotizacion;
   private String servicio;
@@ -19,7 +19,7 @@ public class CotizacionOutsourcing {
 
   @Override
   public String toString() {
-    return "CotizacionOutsourcing{" +
+    return "OutsourcingCotizacion{" +
         "nroCotizacion='" + nroCotizacion + '\'' +
         ", servicio='" + servicio + '\'' +
         ", subServicio='" + subServicio + '\'' +

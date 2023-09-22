@@ -1,8 +1,6 @@
 package com.coti.proyecto.expose.web;
 
-import com.coti.proyecto.hiper.model.business.outsourcing.CotizacionOutsourcing;
-import com.coti.proyecto.hiper.model.business.outsourcing.Servicio;
-import com.coti.proyecto.hiper.model.business.outsourcing.SubServicio;
+import com.coti.proyecto.hiper.model.business.heldesk.HelpDeskCotizacion;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -19,31 +17,30 @@ import org.springframework.web.bind.annotation.RestController;
 @ComponentScan(value = "com.proyecto", lazyInit = true)
 public class HelpDeskController {
 
-  private List<CotizacionOutsourcing> cotizacionOutsourcings = new ArrayList<>();
+  private List<HelpDeskCotizacion> helpDeskCotizacions = new ArrayList<>();
 
-  @PostMapping("/outsourcing/grabar")
-  public String grabar(@RequestBody CotizacionOutsourcing c1) {
-    cotizacionOutsourcings.stream()
+  @PostMapping("/helpdesk/grabar")
+  public String grabar(@RequestBody HelpDeskCotizacion c1) {
+    helpDeskCotizacions.stream()
         .filter(x -> Objects.equals(x.getNroCotizacion(), c1.getNroCotizacion()))
         .findFirst()
         .ifPresentOrElse(x -> {
-          x.setServicio(c1.getServicio());
-          x.setSubServicio(c1.getSubServicio());
-          x.setHoras(c1.getHoras());
-          x.setPersonal(c1.getPersonal());
-          x.setTipo(c1.getTipo());
-          x.setCostoXServicio(c1.getCostoXServicio());
-        }, () -> cotizacionOutsourcings.add(c1));
+          x.setTipoServicio(c1.getTipoServicio());
+          x.setDuracion(c1.getDuracion());
+          x.setUsuarios(c1.getUsuarios());
+          x.setModalidad(c1.getModalidad());
+          x.setCostoXAno(c1.getCostoXAno());
+        }, () -> helpDeskCotizacions.add(c1));
 
     System.out.println("========================================");
-    cotizacionOutsourcings.forEach(x-> System.out.println(x.toString()));
+    helpDeskCotizacions.forEach(x -> System.out.println(x.toString()));
     System.out.println("========================================");
 
     return "Guardado exitosamente";
   }
 
-  @GetMapping("/outsourcing/listar")
-  public ResponseEntity<List<CotizacionOutsourcing>> listar() {
-    return ResponseEntity.ok(cotizacionOutsourcings);
+  @GetMapping("/helpdesk/listar")
+  public ResponseEntity<List<HelpDeskCotizacion>> listar() {
+    return ResponseEntity.ok(helpDeskCotizacions);
   }
 }

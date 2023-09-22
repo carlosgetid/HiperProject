@@ -19,7 +19,7 @@ public class CotizacionOutsourcing {
 
   @Override
   public String toString() {
-    return "CotizacionOutsourcing{" +
+    return "OutsourcingCotizacion{" +
         "nroCotizacion='" + nroCotizacion + '\'' +
         ", servicio='" + servicio + '\'' +
         ", subServicio='" + subServicio + '\'' +
