@@ -2,24 +2,18 @@ package com.coti.proyecto.expose.web;
 
 import com.coti.proyecto.hiper.model.business.*;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @ComponentScan(value = "com.proyecto", lazyInit = true)
 public class HiperController {
-
-  private List<Cotizacion> cotizacions = new ArrayList<>();
 
   @GetMapping("/obtener/{id}")
   public String getBook(@PathVariable String id) {
@@ -217,33 +211,6 @@ public class HiperController {
     return ResponseEntity.ok(List.of(e1, e2, e3,e4,e5,e6,e7));
   }
 
-  @PostMapping("/grabar")
-  public String grabar(@RequestBody Cotizacion c1) {
-    cotizacions.stream()
-        .filter(x -> Objects.equals(x.getCodigo(), c1.getCodigo()))
-        .findFirst()
-        .map(x -> {
-          System.out.println("reemplazado");
-          return  c1;
-        })
-        .orElseGet(() -> {
-          System.out.println("agregado");
-          cotizacions.add(c1);
-          return c1;
-        });
-
-    System.out.println("========================================");
-    cotizacions.forEach(x-> System.out.println(x.toString()));
-    System.out.println("========================================");
-
-    return "Guardado exitosamente";
-  }
-
-  @GetMapping("/listar")
-  public ResponseEntity<List<Cotizacion>> listar() {
-    return ResponseEntity.ok(cotizacions);
-  }
-
   @GetMapping("/outsourcing/desarrollo/software")
   public ResponseEntity<List<DesarrolloSoftware>> outsourcingDesarrolloSoftware() {
     DesarrolloSoftware e1 = new DesarrolloSoftware();
@@ -348,7 +315,7 @@ public class HiperController {
     e3.setCostoXHora(19.00);
 
     return ResponseEntity.ok(List.of(e1, e2, e3));
-    
+
   }
 
   @GetMapping("/outsourcing/bigdata/cienciadedatos")

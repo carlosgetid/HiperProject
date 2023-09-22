@@ -9,8 +9,16 @@ import lombok.Setter;
 @Setter
 public class Servicio {
 
-  private String nombre;
   private String codigo;
+  private String nombre;
   private Double precio;
 
+  @Override
+  public String toString() {
+    return "Servicio{" +
+        "codigo='" + codigo + '\'' +
+        ", nombre='" + nombre + '\'' +
+        ", precio=" + precio +
+        '}';
+  }
 }
