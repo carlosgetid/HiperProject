@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +21,7 @@ public class HelpDeskController {
   private List<HelpDeskCotizacion> helpDeskCotizacions = new ArrayList<>();
 
   @PostMapping("/helpdesk/grabar")
-  public String grabar(@RequestBody HelpDeskCotizacion c1) {
+  public ResponseEntity<?> grabar(@RequestBody HelpDeskCotizacion c1) {
     helpDeskCotizacions.stream()
         .filter(x -> Objects.equals(x.getNroCotizacion(), c1.getNroCotizacion()))
         .findFirst()
@@ -36,7 +37,7 @@ public class HelpDeskController {
     helpDeskCotizacions.forEach(x -> System.out.println(x.toString()));
     System.out.println("========================================");
 
-    return "Guardado exitosamente";
+    return new ResponseEntity<>(helpDeskCotizacions,HttpStatus.OK);
   }
 
   @GetMapping("/helpdesk/listar")
