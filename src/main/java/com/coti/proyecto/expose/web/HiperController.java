@@ -2,13 +2,11 @@ package com.coti.proyecto.expose.web;
 
 import com.coti.proyecto.hiper.model.business.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
@@ -483,5 +481,347 @@ public class HiperController {
     e4.setSelected(false);
 
     return ResponseEntity.ok(List.of(e1, e2, e3, e4));
+  }
+
+  @GetMapping("/service-outsourcing")
+  public ResponseEntity<List<ServiciosOutSourcing>> serviceOutSourcing() {
+
+    //  PRIMER SERVICIO
+    ServiciosOutSourcing e1 = new ServiciosOutSourcing();
+    e1.setCodigoSe(1);
+    e1.setDescripcion("Desarrollo de Software");
+
+    ServiciosOutSourcing e2 = new ServiciosOutSourcing();
+    e2.setCodigoSe(2);
+    e2.setDescripcion("Consultoría y Asesoramiento");
+
+    ServiciosOutSourcing e3 = new ServiciosOutSourcing();
+    e3.setCodigoSe(3);
+    e3.setDescripcion("Gestión de Proyectos");
+
+    ServiciosOutSourcing e4 = new ServiciosOutSourcing();
+    e4.setCodigoSe(4);
+    e4.setDescripcion("Gestión de Bases de Datos");
+
+    ServiciosOutSourcing e5 = new ServiciosOutSourcing();
+    e5.setCodigoSe(5);
+    e5.setDescripcion("Integración de Datos");
+
+    ServiciosOutSourcing e6 = new ServiciosOutSourcing();
+    e6.setCodigoSe(6);
+    e6.setDescripcion("Big Data y Ciencia de Datos");
+
+    ServiciosOutSourcing e7 = new ServiciosOutSourcing();
+    e7.setCodigoSe(7);
+    e7.setDescripcion("Automatización de Procesos de Negocios");
+
+    ServiciosOutSourcing e8 = new ServiciosOutSourcing();
+    e8.setCodigoSe(8);
+    e8.setDescripcion("Evaluación y Mejora de la Seguridad Cibernética");
+
+    return ResponseEntity.ok(List.of(e1,e2,e3,e4,e5,e6,e7,e8));
+  }
+
+  @GetMapping("/sub-service-outsourcing/{codigo}")
+  public ResponseEntity<List<SubServicioOutSourcing>> subServiceOutSourcing(@PathVariable int codigo, @RequestParam(required = false) String fields) {
+
+    SubServicioOutSourcing e1 = new SubServicioOutSourcing();
+
+    if(codigo == 1){
+
+      e1.setSubCodigo(1);
+      e1.setCodigo(1);
+
+      List<SubServicioOutSourcing> subS1 = new ArrayList<>();
+
+      SubServicioOutSourcing f1 = new SubServicioOutSourcing();
+      f1.setSubCodigo(1);
+      f1.setDescripcion("Desarrollo de aplicaciones web");
+      f1.setPrecio(17.0);
+
+      SubServicioOutSourcing f2 = new SubServicioOutSourcing();
+      f2.setSubCodigo(2);
+      f2.setDescripcion("Desarrollo de aplicaciones móviles");
+      f2.setPrecio(17.0);
+
+      SubServicioOutSourcing f3 = new SubServicioOutSourcing();
+      f3.setSubCodigo(3);
+      f3.setDescripcion("Desarrollo de software personalizado");
+      f3.setPrecio(17.0);
+
+      SubServicioOutSourcing f4 = new SubServicioOutSourcing();
+      f4.setSubCodigo(4);
+      f4.setDescripcion("Desarrollo de software de gestión empresarial");
+      f4.setPrecio(17.0);
+
+      subS1.add(f1);
+      subS1.add(f2);
+      subS1.add(f3);
+      subS1.add(f4);
+
+      e1.setSubServicioOutSourcings(subS1);
+
+      if (fields != null && !fields.isEmpty()) {
+        if (fields.equals("subServicioOutSourcings")) {
+          // Si "fields" es igual a "subServicioOutSourcings", devolvemos solo ese campo
+          return ResponseEntity.ok(e1.getSubServicioOutSourcings());
+        }
+      }
+
+      return ResponseEntity.ok(List.of(e1));
+    }
+
+    else if(codigo == 2){
+
+      e1.setSubCodigo(2);
+      e1.setCodigo(2);
+
+      List<SubServicioOutSourcing> subS1 = new ArrayList<>();
+
+      SubServicioOutSourcing f1 = new SubServicioOutSourcing();
+      f1.setSubCodigo(5);
+      f1.setDescripcion("Consultoría en estrategia de TI");
+      f1.setPrecio(16.0);
+
+      SubServicioOutSourcing f2 = new SubServicioOutSourcing();
+      f2.setSubCodigo(6);
+      f2.setDescripcion("Consultoría en ciberseguridad");
+      f2.setPrecio(16.0);
+
+      SubServicioOutSourcing f3 = new SubServicioOutSourcing();
+      f3.setSubCodigo(7);
+      f3.setDescripcion("Consultoría en gestión de proyectos");
+      f3.setPrecio(16.0);
+
+      subS1.add(f1);
+      subS1.add(f2);
+      subS1.add(f3);
+
+      e1.setSubServicioOutSourcings(subS1);
+
+      if (fields != null && !fields.isEmpty()) {
+        if (fields.equals("subServicioOutSourcings")) {
+          // Si "fields" es igual a "subServicioOutSourcings", devolvemos solo ese campo
+          return ResponseEntity.ok(e1.getSubServicioOutSourcings());
+        }
+      }
+
+      return ResponseEntity.ok(List.of(e1));
+    }else if(codigo  == 3) {
+
+      e1.setSubCodigo(3);
+      e1.setCodigo(3);
+
+      List<SubServicioOutSourcing> subS1 = new ArrayList<>();
+
+      SubServicioOutSourcing f1 = new SubServicioOutSourcing();
+      f1.setSubCodigo(8);
+      f1.setDescripcion("Gestión de proyectos de desarrollo de software");
+      f1.setPrecio(16.0);
+
+      SubServicioOutSourcing f2 = new SubServicioOutSourcing();
+      f2.setSubCodigo(9);
+      f2.setDescripcion("Gestión de proyectos de TI");
+      f2.setPrecio(16.0);
+
+      SubServicioOutSourcing f3 = new SubServicioOutSourcing();
+      f3.setSubCodigo(10);
+      f3.setDescripcion("Gestión de proyectos de infraestructura");
+      f3.setPrecio(16.0);
+
+      subS1.add(f1);
+      subS1.add(f2);
+      subS1.add(f3);
+
+      e1.setSubServicioOutSourcings(subS1);
+
+      if (fields != null && !fields.isEmpty()) {
+        if (fields.equals("subServicioOutSourcings")) {
+          // Si "fields" es igual a "subServicioOutSourcings", devolvemos solo ese campo
+          return ResponseEntity.ok(e1.getSubServicioOutSourcings());
+        }
+      }
+      return ResponseEntity.ok(List.of(e1));
+
+    }else if( codigo == 4){
+
+      e1.setSubCodigo(4);
+      e1.setCodigo(4);
+
+      List<SubServicioOutSourcing> subS1 = new ArrayList<>();
+
+      SubServicioOutSourcing f1 = new SubServicioOutSourcing();
+      f1.setSubCodigo(11);
+      f1.setDescripcion("Administración y mantenimiento de bases de datos");
+      f1.setPrecio(17.0);
+
+      SubServicioOutSourcing f2 = new SubServicioOutSourcing();
+      f2.setSubCodigo(12);
+      f2.setDescripcion("Optimización de bases de datos para el rendimiento");
+      f2.setPrecio(17.0);
+
+      SubServicioOutSourcing f3 = new SubServicioOutSourcing();
+      f3.setSubCodigo(13);
+      f3.setDescripcion("Migración de datos entre sistemas");
+      f3.setPrecio(17.0);
+
+      subS1.add(f1);
+      subS1.add(f2);
+      subS1.add(f3);
+
+      e1.setSubServicioOutSourcings(subS1);
+
+      if (fields != null && !fields.isEmpty()) {
+        if (fields.equals("subServicioOutSourcings")) {
+          // Si "fields" es igual a "subServicioOutSourcings", devolvemos solo ese campo
+          return ResponseEntity.ok(e1.getSubServicioOutSourcings());
+        }
+      }
+      return ResponseEntity.ok(List.of(e1));
+
+    }else if( codigo == 5){
+
+      e1.setSubCodigo(5);
+      e1.setCodigo(5);
+
+      List<SubServicioOutSourcing> subS1 = new ArrayList<>();
+
+      SubServicioOutSourcing f1 = new SubServicioOutSourcing();
+      f1.setSubCodigo(14);
+      f1.setDescripcion("Integración de sistemas y flujos de datos");
+      f1.setPrecio(19.0);
+
+      SubServicioOutSourcing f2 = new SubServicioOutSourcing();
+      f2.setSubCodigo(15);
+      f2.setDescripcion("ETL (Extracción, Transformación y Carga) de datos");
+      f2.setPrecio(19.0);
+
+      SubServicioOutSourcing f3 = new SubServicioOutSourcing();
+      f3.setSubCodigo(16);
+      f3.setDescripcion("Automatización de procesos de datos");
+      f3.setPrecio(19.0);
+
+      subS1.add(f1);
+      subS1.add(f2);
+      subS1.add(f3);
+
+      e1.setSubServicioOutSourcings(subS1);
+
+      if (fields != null && !fields.isEmpty()) {
+        if (fields.equals("subServicioOutSourcings")) {
+          // Si "fields" es igual a "subServicioOutSourcings", devolvemos solo ese campo
+          return ResponseEntity.ok(e1.getSubServicioOutSourcings());
+        }
+      }
+      return ResponseEntity.ok(List.of(e1));
+
+    }else if( codigo == 6){
+
+      e1.setSubCodigo(6);
+      e1.setCodigo(6);
+
+      List<SubServicioOutSourcing> subS1 = new ArrayList<>();
+
+      SubServicioOutSourcing f1 = new SubServicioOutSourcing();
+      f1.setSubCodigo(17);
+      f1.setDescripcion("Proyectos de análisis de Big Data");
+      f1.setPrecio(21.0);
+
+      SubServicioOutSourcing f2 = new SubServicioOutSourcing();
+      f2.setSubCodigo(18);
+      f2.setDescripcion("Modelado predictivo y análisis avanzado");
+      f2.setPrecio(21.0);
+
+      SubServicioOutSourcing f3 = new SubServicioOutSourcing();
+      f3.setSubCodigo(19);
+      f3.setDescripcion("Implementación de soluciones de ciencia de datos");
+      f3.setPrecio(21.0);
+
+      subS1.add(f1);
+      subS1.add(f2);
+      subS1.add(f3);
+
+      e1.setSubServicioOutSourcings(subS1);
+
+      if (fields != null && !fields.isEmpty()) {
+        if (fields.equals("subServicioOutSourcings")) {
+          // Si "fields" es igual a "subServicioOutSourcings", devolvemos solo ese campo
+          return ResponseEntity.ok(e1.getSubServicioOutSourcings());
+        }
+      }
+      return ResponseEntity.ok(List.of(e1));
+
+    }else if( codigo == 7){
+      e1.setSubCodigo(7);
+      e1.setCodigo(7);
+
+      List<SubServicioOutSourcing> subS1 = new ArrayList<>();
+
+      SubServicioOutSourcing f1 = new SubServicioOutSourcing();
+      f1.setSubCodigo(20);
+      f1.setDescripcion("Automatización de flujos de trabajo.");
+      f1.setPrecio(19.0);
+
+      SubServicioOutSourcing f2 = new SubServicioOutSourcing();
+      f2.setSubCodigo(21);
+      f2.setDescripcion("Implementación de RPA (Automatización de Procesos Robóticos)");
+      f2.setPrecio(19.0);
+
+      subS1.add(f1);
+      subS1.add(f2);
+
+
+      e1.setSubServicioOutSourcings(subS1);
+
+      if (fields != null && !fields.isEmpty()) {
+        if (fields.equals("subServicioOutSourcings")) {
+          // Si "fields" es igual a "subServicioOutSourcings", devolvemos solo ese campo
+          return ResponseEntity.ok(e1.getSubServicioOutSourcings());
+        }
+      }
+      return ResponseEntity.ok(List.of(e1));
+
+    }else if( codigo == 8){
+      e1.setSubCodigo(7);
+      e1.setCodigo(7);
+
+      List<SubServicioOutSourcing> subS1 = new ArrayList<>();
+
+      SubServicioOutSourcing f1 = new SubServicioOutSourcing();
+      f1.setSubCodigo(22);
+      f1.setDescripcion("Identificación de vulnerabilidades en aplicaciones, bases de datos, sistemas operativos, etc");
+      f1.setPrecio(23.0);
+
+      SubServicioOutSourcing f2 = new SubServicioOutSourcing();
+      f2.setSubCodigo(23);
+      f2.setDescripcion("Evaluación de la seguridad de la red y la infraestructura de TI.");
+      f2.setPrecio(23.0);
+
+      SubServicioOutSourcing f3 = new SubServicioOutSourcing();
+      f3.setSubCodigo(24);
+      f3.setDescripcion("Desarrollo de un plan de respuesta a incidentes");
+      f3.setPrecio(23.0);
+
+      SubServicioOutSourcing f4 = new SubServicioOutSourcing();
+      f4.setSubCodigo(25);
+      f4.setDescripcion("Auditorías Regulares de Seguridad");
+      f4.setPrecio(23.0);
+
+      subS1.add(f1);
+      subS1.add(f2);
+      subS1.add(f3);
+      subS1.add(f4);
+
+
+      e1.setSubServicioOutSourcings(subS1);
+
+      if (fields != null && !fields.isEmpty()) {
+        if (fields.equals("subServicioOutSourcings")) {
+          return ResponseEntity.ok(e1.getSubServicioOutSourcings());
+        }
+      }
+      return ResponseEntity.ok(List.of(e1));
+    }
+    return null;
   }
 }
