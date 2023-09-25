@@ -21,6 +21,8 @@ public class OutsourcingController {
 
   private List<OutsourcingCotizacion> outsourcingCotizacions = new ArrayList<>();
 
+  private Integer counter = 0;
+
   @GetMapping("/outsourcing/servicios/subservicios")
   public ResponseEntity<List<Servicio>> obtenerServicios() {
     SubServicio b2 = new SubServicio();
@@ -211,6 +213,12 @@ public class OutsourcingController {
 
   @PostMapping("/outsourcing/grabar")
   public String grabar(@RequestBody OutsourcingCotizacion c1) {
+    counter++;
+    int numZeros = 6 - counter.toString().length();
+
+    String zeros = "0".repeat(numZeros);
+
+    c1.setNroCotizacion("C"+zeros+counter);
     outsourcingCotizacions.stream()
         .filter(x -> Objects.equals(x.getNroCotizacion(), c1.getNroCotizacion()))
         .findFirst()
