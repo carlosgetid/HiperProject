@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -212,7 +213,7 @@ public class OutsourcingController {
 
 
   @PostMapping("/outsourcing/grabar")
-  public String grabar(@RequestBody OutsourcingCotizacion c1) {
+  public ResponseEntity<?> grabar(@RequestBody OutsourcingCotizacion c1) {
     counter++;
     int numZeros = 6 - counter.toString().length();
 
@@ -235,7 +236,7 @@ public class OutsourcingController {
     outsourcingCotizacions.forEach(x-> System.out.println(x.toString()));
     System.out.println("========================================");
 
-    return "Guardado exitosamente";
+    return new ResponseEntity<>(outsourcingCotizacions, HttpStatus.OK);
   }
 
   @GetMapping("/outsourcing/listar")
