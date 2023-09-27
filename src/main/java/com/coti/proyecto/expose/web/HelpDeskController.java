@@ -4,6 +4,8 @@ import com.coti.proyecto.hiper.model.business.heldesk.HelpDeskCotizacion;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+import com.coti.proyecto.hiper.model.business.outsourcing.OutsourcingCotizacion;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,8 +22,16 @@ public class HelpDeskController {
 
   private List<HelpDeskCotizacion> helpDeskCotizacions = new ArrayList<>();
 
+    private Integer counter = 0;
+
   @PostMapping("/helpdesk/grabar")
   public ResponseEntity<?> grabar(@RequestBody HelpDeskCotizacion c1) {
+      counter++;
+      int numZeros = 6 - counter.toString().length();
+
+      String zeros = "0".repeat(numZeros);
+
+      c1.setNroCotizacion("C"+zeros+counter);
     helpDeskCotizacions.stream()
         .filter(x -> Objects.equals(x.getNroCotizacion(), c1.getNroCotizacion()))
         .findFirst()

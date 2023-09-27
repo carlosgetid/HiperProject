@@ -1,5 +1,6 @@
 package com.coti.proyecto.expose.web;
 
+import com.coti.proyecto.hiper.model.business.outsourcing.OutsourcingCotizacion;
 import com.coti.proyecto.hiper.model.business.soporte.SoporteCotizacion;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,8 +21,16 @@ public class SoporteController {
 
   private List<SoporteCotizacion> soporteCotizacions = new ArrayList<>();
 
+    private Integer counter = 0;
+
   @PostMapping("/soporte/grabar")
   public ResponseEntity<?> grabar(@RequestBody SoporteCotizacion c1) {
+      counter++;
+      int numZeros = 6 - counter.toString().length();
+
+      String zeros = "0".repeat(numZeros);
+
+      c1.setNroCotizacion("C"+zeros+counter);
     soporteCotizacions.stream()
         .filter(x -> Objects.equals(x.getNroCotizacion(), c1.getNroCotizacion()))
         .findFirst()
