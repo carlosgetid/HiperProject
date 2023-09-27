@@ -26,6 +26,7 @@ public class HelpDeskController {
         .filter(x -> Objects.equals(x.getNroCotizacion(), c1.getNroCotizacion()))
         .findFirst()
         .ifPresentOrElse(x -> {
+            x.setNroCotizacion(c1.getNroCotizacion());
           x.setTipoServicio(c1.getTipoServicio());
           x.setDuracion(c1.getDuracion());
           x.setUsuarios(c1.getUsuarios());
