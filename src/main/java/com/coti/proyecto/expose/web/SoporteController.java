@@ -26,6 +26,7 @@ public class SoporteController {
         .filter(x -> Objects.equals(x.getNroCotizacion(), c1.getNroCotizacion()))
         .findFirst()
         .ifPresentOrElse(x -> {
+            x.setNroCotizacion(c1.getNroCotizacion());
           x.setServicio(c1.getServicio());
           x.setHorario(c1.getHorario());
           x.setEquipos(c1.getEquipos());
